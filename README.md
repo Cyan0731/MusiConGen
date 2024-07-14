@@ -129,4 +129,4 @@ dora run -d solver=musicgen/multigpu_finetune \
 use `export_weight.py` with your training signature `sig` to export your weight to `output_dir`.
 
 ## License
-The license of code and model weights follows the LICENSE file, LICENSE of MusicGen in [LICENSE file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE) and [LICENSE_weights file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE_weights).
+The license of code and model weights follows the [LICENSE file](https://github.com/Cyan0731/MusiConGen/blob/main/LICENSE), LICENSE of MusicGen in [LICENSE file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE) and [LICENSE_weights file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE_weights).

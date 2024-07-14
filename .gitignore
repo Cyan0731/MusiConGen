@@ -2,3 +2,4 @@ audiocraft/__pycache__/
 audiocraft/ckpt/*
 audiocraft/output_samples
 audiocraft/training_weights/*
+**/.DS_Store

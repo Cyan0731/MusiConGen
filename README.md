@@ -28,13 +28,13 @@ The model is based on the pretrained MusicGen-melody(1.5B). For infernece, GPU w
 ## Inference
 
 First, the model weight is at [link](https://huggingface.co/Cyan0731/MusiConGen/tree/main).
-Extract the model weight to directory `audiocraft/ckpt`.
+Move the model weight `compression_state_dict.bin` and `state_dict.bin` to directory `audiocraft/ckpt/musicongen`.
 
 One can simply run inference script with the command to generate music with chord and rhythm condition:
 ```shell
 cd audiocraft
 python generate_chord_beat.py
-```
+``` 
 
 ## Training 
 
@@ -82,8 +82,8 @@ cd 2_chord/BTC-ISMIR19
 python main.py
 ```
 
-### 4. tags/description labeling
-For dataset crawled from website(e.g. youtube), the description of each song can be obtrained from crawled  informaiton `crawl_info.json`(you can change the file name in `3_1_ytjsons2tags/main.py`). We use the title of youtube song as description. The `root_dir` in `main.py` should be changed to your clips data directory.
+### 4. tags/description labeling (optional)
+For dataset crawled from website(e.g. youtube), the description of each song can be obtrained from crawled informaiton `crawl_info.json`(you can change the file name in `3_1_ytjsons2tags/main.py`). We use the title of youtube song as description. The `root_dir` in `main.py` should be changed to your clips data directory.
 
 ```shell
 cd 3_1_ytjsons2tags
@@ -95,6 +95,8 @@ For dataset without information to describe, you can use [Essentia](https://gith
 cd 3_tags/essentia
 python main.py
 ```
+
+After json files are created, run `dump_jsonl.py` to generate jsonl file in training directory.
 
 ### Training
 The training weight of MusiConGen is at [link](https://huggingface.co/Cyan0731/MusiConGen_training/tree/main). Please place it into the directory `MusiConGen/audiocraft/training_weights/xps/musicongen`.

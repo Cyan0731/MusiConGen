@@ -1,0 +1,8 @@
+# @package _global_
+
+# ???M
+
+transformer_lm:
+  dim: 1280
+  num_heads: 20
+  num_layers: 36

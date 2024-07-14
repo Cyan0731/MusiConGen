@@ -1,0 +1,45 @@
+# @package __global__
+
+classifier_free_guidance:
+  training_dropout: 0.2
+  inference_coef: 3.0
+
+attribute_dropout:
+  args:
+      active_on_eval: false
+  text: {}
+  chord:
+    chord: 0.5
+  beat:
+    beat: 0.5
+
+fuser:
+  cross_attention_pos_emb: false
+  cross_attention_pos_emb_scale: 1
+  in_attn : true
+  sum: [chord, beat]
+  prepend: [chord, description]
+  cross: []
+  input_interpolate: []
+  
+conditioners:
+  description:
+    model: t5
+    t5:
+      name: t5-base
+      finetune: false
+      word_dropout: 0.2
+      normalize_text: false
+  chord:
+    model: chord
+    chord:
+      name: chord
+  beat:
+    model: beat
+    beat:
+      name: beat
+dataset:
+  train:
+    merge_text_p: 0.25
+    drop_desc_p: 0.5
+    drop_other_p: 0.5

@@ -1,0 +1,10 @@
+# @package __global__
+
+datasource:
+  max_sample_rate: 44100
+  max_channels: 2
+
+  train: egs/YT_backing_tracks_0615
+  valid: egs/YT_backing_tracks_0615
+  evaluate: egs/YT_backing_tracks_0615
+  generate: egs/YT_backing_tracks_0615

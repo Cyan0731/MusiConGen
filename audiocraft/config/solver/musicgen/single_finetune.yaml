@@ -1,0 +1,63 @@
+# @package __global__
+
+# This is the training loop solver
+# for the base MusicGen model (text-to-music)
+defaults:
+  - musicgen/default
+  - /model: lm/musicgen_lm
+  - _self_
+
+autocast: true
+autocast_dtype: float16
+
+# EnCodec large trained on mono-channel music audio sampled at 32khz
+# with a total stride of 640 leading to 50 frames/s.
+# rvq.n_q=4, rvq.bins=2048, no quantization dropout
+# (transformer_lm card and n_q must be compatible)
+compression_model_checkpoint: //pretrained/facebook/encodec_32khz
+
+channels: 1
+sample_rate: 32000
+
+deadlock:
+  use: true  # deadlock detection
+
+dataset:
+  batch_size: 2  # 1 GPU(3090)
+  num_workers: 2
+  segment_duration: 30
+  sample_on_weight: false  # Uniform sampling all the way
+  sample_on_duration: false  # Uniform sampling all the way
+  valid:
+    num_samples: 4
+
+generate:
+  lm:
+    use_sampling: true
+    top_k: 250
+    top_p: 0.0
+
+checkpoint:
+  save_last: true
+  save_every: 25
+  keep_every_states: null
+
+optim:
+  epochs: 100
+  optimizer: dadam
+  lr: 1.0
+  max_norm: 1.0
+  ema:
+    use: false
+    updates: 10
+    device: cuda
+
+logging:
+  log_tensorboard: true
+
+schedule:
+  lr_scheduler: cosine
+  cosine:
+    warmup: 5
+    lr_min_ratio: 0.0
+    cycle_length: 1.0

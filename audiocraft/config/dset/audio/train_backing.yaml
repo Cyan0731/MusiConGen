@@ -1,0 +1,10 @@
+# @package __global__
+
+datasource:
+  max_sample_rate: 48000
+  max_channels: 2
+
+  train: egs/5_genre_backing
+  valid: egs/musdb_valid
+  evaluate: egs/musdb_valid
+  generate: egs/musdb_valid

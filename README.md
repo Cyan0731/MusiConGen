@@ -27,7 +27,7 @@ The model is based on the pretrained MusicGen-melody(1.5B). For infernece, GPU w
 
 ## Inference
 
-First, the model weight is at [link]().
+First, the model weight is at [link](https://huggingface.co/Cyan0731/MusiConGen/tree/main).
 Extract the model weight to directory `audiocraft/ckpt`.
 
 One can simply run inference script with the command to generate music with chord and rhythm condition:
@@ -97,7 +97,7 @@ python main.py
 ```
 
 ### Training
-The training weight of MusiConGen is at [link](). Please place it into the directory `MusiConGen/audiocraft/training_weights/xps/musicongen`.
+The training weight of MusiConGen is at [link](https://huggingface.co/Cyan0731/MusiConGen_training/tree/main). Please place it into the directory `MusiConGen/audiocraft/training_weights/xps/musicongen`.
 
 Before training, you should set your username in environment variable
 ```shell

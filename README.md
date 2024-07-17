@@ -1,17 +1,21 @@
 # MusiConGen
 
-MusiConGen is a project for deep learning research on conditinoal music generation. MusiConGen is based on pretrained [Musicgen](https://github.com/facebookresearch/audiocraft) with additional controls: Rhythm and Chords. The project contains inference, training code and training data(youtube list).
 
+This is the official implementation of paper: "MusiConGen: Rhythm and chord control for Transformer-based text-to-music generation" in Proc. Int. Society for Music Information Retrieval Conf. (ISMIR), 2024.
+
+MusiConGen is based on pretrained [Musicgen](https://github.com/facebookresearch/audiocraft) with additional controls: Rhythm and Chords. The project contains inference, training code and training data (youtube list). 
+
+<br />
+
+[Arxiv Paper]() | [Demo](https://musicongen.github.io/musicongen_demo/) 
+
+<br />
 
 ## Installation
-MusiConGen requires Python 3.9, PyTorch 2.0.0. To install MusiConGen, you can run the following:
-
-```shell
-# Best to make sure you have torch installed first, in particular before installing xformers.
-# Don't run this if you already have PyTorch installed.
-pip install 'torch>=2.0'
-# Then proceed to one of the following
-pip install -e .  # if you cloned the repo locally (mandatory if you want to train).
+#
+MusiConGen requires Python 3.9 and PyTorch 2.0.0. You can run:
+```bash
+pip install -r requirements.txt
 ```
 
 We also recommend having `ffmpeg` installed, either through your system or Anaconda:
@@ -21,8 +25,10 @@ sudo apt-get install ffmpeg
 conda install 'ffmpeg<5' -c  conda-forge
 ```
 
-## Model
+<br />
 
+## Model
+#
 The model is based on the pretrained MusicGen-melody(1.5B). For infernece, GPU with VRAM greater than 12GB is recommended. For training, GPU with VRAM greater than 24GB is recommended.
 
 ## Inference
@@ -36,8 +42,11 @@ cd audiocraft
 python generate_chord_beat.py
 ``` 
 
-## Training 
+<br />
 
+
+## Training 
+#
 ### Training Data
 The training data is provided as json format in 5_genre_songs_list.json. The listed suffixes are for youtube links.
 
@@ -58,6 +67,8 @@ cd 0_demix
 python main.py
 ```
 
+<br />
+
 ### 2. beat/downbeat detection and cropping
 To extract beat and down beat of songs, you can use [BeatNet](https://github.com/mjhydri/BeatNet) or [Madmom](https://github.com/CPJKU/madmom) as the beat extrctor.
 For Beatnet user, change `path_rootdir` to your directory in `main_beat_nn.py`. For Madmom user, change `path_rootdir` to your directory in `main_beat.py`.
@@ -73,6 +84,8 @@ python main_crop.py
 python main_filter.py
 ```
 
+<br />
+
 ### 3. chord extraction
 To extract chord progression, we use [BTC-ISMIR2019](https://github.com/jayg996/BTC-ISMIR19).
 The `root_dir` in `main.py` should be changed to your clips data directory.
@@ -81,6 +94,8 @@ The `root_dir` in `main.py` should be changed to your clips data directory.
 cd 2_chord/BTC-ISMIR19
 python main.py
 ```
+
+<br />
 
 ### 4. tags/description labeling (optional)
 For dataset crawled from website(e.g. youtube), the description of each song can be obtrained from crawled informaiton `crawl_info.json`(you can change the file name in `3_1_ytjsons2tags/main.py`). We use the title of youtube song as description. The `root_dir` in `main.py` should be changed to your clips data directory.
@@ -98,7 +113,9 @@ python main.py
 
 After json files are created, run `dump_jsonl.py` to generate jsonl file in training directory.
 
-### Training
+<br />
+
+### Training stage
 The training weight of MusiConGen is at [link](https://huggingface.co/Cyan0731/MusiConGen_training/tree/main). Please place it into the directory `MusiConGen/audiocraft/training_weights/xps/musicongen`.
 
 Before training, you should set your username in environment variable
@@ -127,8 +144,13 @@ dora run -d solver=musicgen/multigpu_finetune \
     transformer_lm.n_q=4 transformer_lm.card=2048
 ```
 
-## export weight
+<br />
+
+### export weight
 use `export_weight.py` with your training signature `sig` to export your weight to `output_dir`.
 
+<br />
+
 ## License
+#
 The license of code and model weights follows the [LICENSE file](https://github.com/Cyan0731/MusiConGen/blob/main/LICENSE), LICENSE of MusicGen in [LICENSE file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE) and [LICENSE_weights file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE_weights).

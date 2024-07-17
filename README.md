@@ -12,7 +12,6 @@ MusiConGen is based on pretrained [Musicgen](https://github.com/facebookresearch
 <br />
 
 ## Installation
-#
 MusiConGen requires Python 3.9 and PyTorch 2.0.0. You can run:
 ```bash
 pip install -r requirements.txt
@@ -28,7 +27,6 @@ conda install 'ffmpeg<5' -c  conda-forge
 <br />
 
 ## Model
-#
 The model is based on the pretrained MusicGen-melody(1.5B). For infernece, GPU with VRAM greater than 12GB is recommended. For training, GPU with VRAM greater than 24GB is recommended.
 
 ## Inference
@@ -46,7 +44,7 @@ python generate_chord_beat.py
 
 
 ## Training 
-#
+
 ### Training Data
 The training data is provided as json format in 5_genre_songs_list.json. The listed suffixes are for youtube links.
 
@@ -152,5 +150,4 @@ use `export_weight.py` with your training signature `sig` to export your weight 
 <br />
 
 ## License
-#
 The license of code and model weights follows the [LICENSE file](https://github.com/Cyan0731/MusiConGen/blob/main/LICENSE), LICENSE of MusicGen in [LICENSE file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE) and [LICENSE_weights file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE_weights).

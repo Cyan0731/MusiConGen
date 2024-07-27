@@ -151,3 +151,17 @@ use `export_weight.py` with your training signature `sig` to export your weight 
 
 ## License
 The license of code and model weights follows the [LICENSE file](https://github.com/Cyan0731/MusiConGen/blob/main/LICENSE), LICENSE of MusicGen in [LICENSE file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE) and [LICENSE_weights file](https://github.com/facebookresearch/audiocraft/blob/main/LICENSE_weights).
+
+<br />
+
+## Citation
+```bibtex
+@misc{lan2024musicongenrhythmchordcontrol,
+      title={MusiConGen: Rhythm and Chord Control for Transformer-Based Text-to-Music Generation}, 
+      author={Yun-Han Lan and Wen-Yi Hsiao and Hao-Chung Cheng and Yi-Hsuan Yang},
+      year={2024},
+      eprint={2407.15060},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+}
+```
